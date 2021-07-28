@@ -1,0 +1,10 @@
+version = 0.1
+[prod]
+[prod.deploy]
+[prod.deploy.parameters]
+stack_name = "personal-dmz-vpc-stack"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-imvgo29ug3dc"
+s3_prefix = "personal-dmz-vpc-stack"
+region = "us-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"

@@ -1,4 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
 Description: >
 
     Template for personal DMZ VPC
@@ -11,3 +12,51 @@ Resources:
       Tags: 
         - Key: Name
           Value: DMZ
+
+  dmzSubnetwest2a: 
+    Type: AWS::EC2::Subnet 
+    Properties: 
+      VpcId: 
+        Ref: dmzVPC
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: 'us-west-2a'
+      Tags: 
+        - Key: Name
+          Value: dmz-2a
+
+  dmzSubnetwest2b: 
+    Type: AWS::EC2::Subnet 
+    Properties: 
+      VpcId: 
+        Ref: dmzVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: 'us-west-2b'
+      Tags: 
+        - Key: Name
+          Value: dmz-2b
+
+  dmzSubnetwest2c: 
+    Type: AWS::EC2::Subnet 
+    Properties: 
+      VpcId: 
+        Ref: dmzVPC
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: 'us-west-2c'
+      Tags: 
+        - Key: Name
+          Value: dmz-2c
+
+  InternetGateway: 
+    Type: AWS::EC2::InternetGateway
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: dmz-igw
+
+  DMZAttachGateway: 
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties: 
+      VpcId: 
+        Ref: dmzVPC
+      InternetGatewayId: 
+        Ref: InternetGateway
