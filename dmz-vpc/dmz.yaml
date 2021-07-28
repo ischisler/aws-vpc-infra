@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >
+
+    Template for personal DMZ VPC
+
+Resources: 
+  dmzVPC: 
+    Type: AWS::EC2::VPC
+    Properties: 
+      CidrBlock: 10.0.0.0/22
+      Tags: 
+        - Key: Name
+          Value: DMZ
